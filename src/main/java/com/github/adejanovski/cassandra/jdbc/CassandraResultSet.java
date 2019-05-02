@@ -748,8 +748,8 @@ class CassandraResultSet extends AbstractResultSet implements CassandraResultSet
     		}else if (typeName.equals("text")){
     			return (Object) currentRow.getString(index-1);
     		}else if (typeName.equals("timestamp")){
-		        Timestamp timeStamp = currentRow.getTimestamp(index-1);
-			return (Object) (timeStamp == null ? null : new Timestamp(timeStamp.getTime()));
+		        java.util.Date date = currentRow.getTimestamp(index-1);
+			return (Object) (date == null ? null : new Timestamp(date.getTime()));
     		}else if (typeName.equals("uuid")){
     			return (Object) currentRow.getUUID(index-1);
     		}else if (typeName.equals("timeuuid")){
@@ -854,8 +854,8 @@ class CassandraResultSet extends AbstractResultSet implements CassandraResultSet
     		}else if (typeName.equals("text")){
     			return (Object) currentRow.getString(name);
     		}else if (typeName.equals("timestamp")){
-		        Timestamp timeStamp = currentRow.getTimestamp(name);
-			return (Object) (timeStamp == null ? null : new Timestamp(timeStamp.getTime()));
+			java.util.Date date = currentRow.getTimestamp(name);
+			return (Object) (date == null ? null : new Timestamp(date.getTime()));
     		}else if (typeName.equals("uuid")){
     			return (Object) currentRow.getUUID(name);
     		}else if (typeName.equals("timeuuid")){
