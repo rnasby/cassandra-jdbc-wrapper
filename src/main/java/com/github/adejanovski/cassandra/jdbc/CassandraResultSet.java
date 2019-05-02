@@ -931,7 +931,8 @@ class CassandraResultSet extends AbstractResultSet implements CassandraResultSet
 	        }
 	        return currentRow.getString(index-1);
         }catch(Exception e){
-        	return getObject(index).toString();
+		Object o = getObject(index);
+                return (o == null ? null : o.toString());
         }
     }
 
